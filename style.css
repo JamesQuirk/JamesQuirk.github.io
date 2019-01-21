@@ -10,7 +10,9 @@ html {
 		color: blue;
 		text-align: left;
 	}
-
+	div {
+		margin: auto;
+	}
 	.heading {
 		text-align: center;
 		border: 2px solid black;
@@ -19,7 +21,7 @@ html {
 		color: #f442aa;
 	}
 	.imgbox img{
-		max-width: 75%;
+		max-width: 100%;
 		margin: auto;
 	}
 	.info{
