@@ -4,7 +4,11 @@ html {
 	padding: 0;
 	}
 	h1{
-	color: red;
+		text-align: center;
+		color: #f442aa;
+	}
+	.heading h3{
+		text-align: center;
 	}
 
 	p{
