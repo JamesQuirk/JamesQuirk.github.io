@@ -11,12 +11,12 @@ html {
 		text-align: center;
 	}
 	.imgbox img{
-		max-height: 100%;
+		max-height: auto;
 		max-width: 100%;
 		margin: auto;
 	}
 
 	p{
 		color: blue;
-		text-align: right;
+		text-align: left;
 	}
