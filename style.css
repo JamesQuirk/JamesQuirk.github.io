@@ -3,13 +3,16 @@ html {
 	margin: 0;
 	padding: 0;
 	}
+	body{
+		background-color: #ffd391;
+	}
 	.heading {
 		text-align: center;
 	}
 	.heading h1{
 		color: #f442aa;
 	}
-	.imgbox img{
+	.imgbox {
 		max-width: 75%;
 		max-height: auto;
 		margin: auto;
