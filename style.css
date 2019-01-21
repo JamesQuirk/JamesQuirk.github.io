@@ -4,21 +4,26 @@ html {
 	padding: 0;
 	}
 	body{
-		background-color: #ffd391;
+		background-color: #d8c3a4;
 	}
+	p{
+		color: blue;
+		text-align: left;
+	}
+
 	.heading {
 		text-align: center;
+		border: 2px solid black;
 	}
 	.heading h1{
 		color: #f442aa;
 	}
 	.imgbox {
 		max-width: 75%;
-		max-height: auto;
 		margin: auto;
 	}
-
-	p{
-		color: blue;
-		text-align: left;
+	.info{
+		border: 1px solid black;
+		text-decoration: underline;
 	}
+	
