@@ -10,7 +10,7 @@ html {
 	.heading h3{
 		text-align: center;
 	}
-	.imgbox{
+	.imgbox img{
 		max-height: 100%;
 		max-width: 100%;
 		margin: auto;
