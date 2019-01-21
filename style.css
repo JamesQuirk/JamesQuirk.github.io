@@ -13,6 +13,9 @@ html {
 	div {
 		margin: auto;
 	}
+	img{
+		max-width: 100%;
+	}
 	.heading {
 		text-align: center;
 		border: 2px solid black;
@@ -20,9 +23,8 @@ html {
 	.heading h1{
 		color: #f442aa;
 	}
-	.imgbox img{
-		max-width: 100%;
-		margin: auto;
+	.imgbox {
+		max-width: 75%;
 	}
 	.info{
 		border: 1px solid black;
