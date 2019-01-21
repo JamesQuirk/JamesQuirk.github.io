@@ -11,8 +11,8 @@ html {
 		text-align: center;
 	}
 	.imgbox img{
-		max-height: auto;
 		max-width: 75%;
+		max-height: auto;
 		margin: auto;
 	}
 
