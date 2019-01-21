@@ -3,7 +3,7 @@ html {
 	margin: 0;
 	padding: 0;
 	}
-	h1{
+	.heading h1{
 		text-align: center;
 		color: #f442aa;
 	}
