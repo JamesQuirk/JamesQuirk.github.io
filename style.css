@@ -8,7 +8,7 @@ html {
 		font-size: 100%;
 		font-family: 'Alex Brush', Arial;
 		border: 2px solid #f6cfca;
-		padding: 5px;
+		
 	}
 	h1{
 		color: #f6cfca;
@@ -71,4 +71,6 @@ html {
 	.info{
 		text-decoration: underline;
 	}
-	
+	.content {
+		padding: 5px;
+	}
