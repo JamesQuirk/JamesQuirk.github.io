@@ -6,11 +6,12 @@ html {
 	body{
 		background-color: #c6bcc4;
 		font-size: 100%;
+		font-family: 'Arial', serif;
 	}
 	h1{
 		color: #f6cfca;
 		font-size: 2.5em;
-		font-family: 'Bilbo Swash Caps', serif;
+		font-weight: bold;
 	}
 	h2 {
 		font-size: 1.875em;
