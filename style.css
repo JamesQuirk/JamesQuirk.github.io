@@ -35,8 +35,14 @@ html {
  		padding: 0;
 	}
 	li a {
-		display: block;
+		display: inline-block;
 		width: 60px;
+	}
+	.active {
+ 		background-color: #4CAF50;
+	}
+	footer {
+		background-color: #f6cfca;
 	}
 	.heading {
 		text-align: center;
