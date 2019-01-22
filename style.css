@@ -32,18 +32,23 @@ html {
 		max-width: 100%;
 	}
 	ul {
+		font-size: 1.5em;
+	}
+	.nav ul {
 	  list-style-type: none;
 	  margin: auto;
 	  padding: 0;
 	  overflow: hidden;
 	  background-color: #333;
+	  position: sticky;
+	  top: 0;
 	}
 
-	li {
+	.nav li {
 	  float: left;
 	}
 
-	li a {
+	.nav li a {
 	  display: block;
 	  color: white;
 	  text-align: center;
@@ -51,15 +56,11 @@ html {
 	  text-decoration: none;
 	  font-size: 1.9em
 	}
-	li a:hover {
+	.nav li a:hover {
 	  background-color: #111;
 	}
-	.active {
+	.nav .active {
  		background-color: #4CAF50;
-	}
-	footer {
-		background-color: #f6cfca;
-		font-size: 1.5em;
 	}
 	.heading {
 		text-align: center;
@@ -73,6 +74,10 @@ html {
 	}
 	.content {
 		padding: 5px;
+	}
+	footer {
+		background-color: #f6cfca;
+		font-size: 1.5em;
 	}
 	.footer {
 		margin: auto;
