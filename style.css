@@ -3,6 +3,10 @@ html {
 	margin: 0;
 	padding: 0;
 	}
+	title{
+		font-size: 50%;
+		font-family: 'Bilbo Swash Caps';
+	}
 	body{
 		background-color: #d8c3a4;
 	}
