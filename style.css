@@ -5,6 +5,7 @@ html {
 	}
 	body{
 		background-color: #d8c3a4;
+		font-family: 'Bilbo Swash Caps';
 	}
 	p{
 		color: blue;
@@ -23,7 +24,7 @@ html {
 	.heading h1{
 		color: #f442aa;
 		font-size: 250%;
-		font-family: 'Bilbo Swash Caps';
+		
 	}
 	.imgbox {
 		max-width: 75%;
