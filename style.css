@@ -29,6 +29,15 @@ html {
 	img{
 		max-width: 100%;
 	}
+	ul {
+	 	list-style-type: none;
+ 		margin: 0;
+ 		padding: 0;
+	}
+	li a {
+		display: block;
+		width: 60px;
+	}
 	.heading {
 		text-align: center;
 		border: 2px solid black;
