@@ -33,7 +33,7 @@ html {
 	}
 	ul {
 	  list-style-type: none;
-	  margin: 0;
+	  margin: auto;
 	  padding: 0;
 	  overflow: hidden;
 	  background-color: #333;
@@ -60,7 +60,6 @@ html {
 	footer {
 		background-color: #f6cfca;
 		font-size: 1.5em;
-		margin: auto;
 	}
 	.heading {
 		text-align: center;
@@ -74,4 +73,7 @@ html {
 	}
 	.content {
 		padding: 5px;
+	}
+	.footer {
+		margin: auto;
 	}
