@@ -5,16 +5,20 @@ html {
 	}
 	body{
 		background-color: #c6bcc4;
-		
+		font-size: 100%;
 	}
 	h1{
-		color: #f442aa;
-		font-size: 250%;
-		font-family: "Bilbo Swash Caps", Times, serif;
+		color: #f6cfca;
+		font-size: 2.5em;
+		font-family: 'Bilbo Swash Caps', serif;
+	}
+	h2 {
+		font-size: 1.875em;
 	}
 	p{
 		color: blue;
 		text-align: left;
+		font-size: 0.875em;
 	}
 	div {
 		margin: auto;
