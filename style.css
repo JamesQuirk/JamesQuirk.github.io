@@ -16,6 +16,7 @@ html {
 	}
 	h2 {
 		font-size: 1.875em;
+		text-decoration: underline;
 	}
 	h3 {
 		font-style: italic;
@@ -68,9 +69,6 @@ html {
 	}
 	.imgbox {
 		max-width: 75%;
-	}
-	.info{
-		text-decoration: underline;
 	}
 	.content {
 		padding: 5px;
