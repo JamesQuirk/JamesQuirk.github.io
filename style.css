@@ -4,8 +4,13 @@ html {
 	padding: 0;
 	}
 	body{
-		background-color: #d8c3a4;
-		font-family: 'Bilbo Swash Caps';
+		background-color: #c6bcc4;
+		
+	}
+	h1{
+		color: #f442aa;
+		font-size: 250%;
+		font-family: "Bilbo Swash Caps", Times, serif;
 	}
 	p{
 		color: blue;
@@ -20,11 +25,6 @@ html {
 	.heading {
 		text-align: center;
 		border: 2px solid black;
-	}
-	.heading h1{
-		color: #f442aa;
-		font-size: 250%;
-		
 	}
 	.imgbox {
 		max-width: 75%;
