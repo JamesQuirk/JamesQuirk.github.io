@@ -1,0 +1,162 @@
+body {
+	font-family: 'Quicksand', sans-serif;
+	font-weight: 300;
+}
+	h1, h2, h3, h4, h5, h6 {
+		font-weight: 500;
+	}
+	.header {
+		position: relative;
+		height: 80px;
+		width: 100%;
+		text-align: center;
+	}
+		.header h1 {
+			position: absolute;
+			left: 50%;
+			transform: translate(-50%,0);
+			width: 50%;
+			font-size: 2.5em;
+		}
+		.logo {
+			float: left;
+			height: 100%;
+			/* display: inline-block; */
+		}
+		.header-info {
+			float: right;
+			/* width: 300px; */
+			height: 50%;
+			justify-self: right;
+			/* display: inline-block; */
+		}
+		.header-info span {
+			font-style: italic;
+			color: rgba(168, 117, 250, 0.6);
+			font-weight: bold;
+		}
+	#default-data-warning {
+		position: relative;
+		display: inline-block;
+		/* text-align: center; */
+		/* transform: translate(50%,0); */
+		color: red;
+		font-size: x-large;
+		font-weight: bold;
+		display: none;
+		text-align: center;
+	}
+	#open-modal-btn {
+		position: relative;
+		left: 0;
+
+		font-size: medium;
+		padding: 1em;
+		border-radius: 1em;
+		text-align: center;
+		/* padding: 26px; */
+		color: black;
+		background: rgba(168, 117, 250, 0.6);
+	}
+	#open-modal-btn:hover {
+		background: rgba(168, 117, 250, 0.7);
+	}
+	.filters {
+		position: relative;
+		display: block;
+		height: 30px;
+		width: 98%;
+		margin: 1%;
+		border-radius: 1em;
+		background-color: rgba(168, 117, 250, 0.6);
+		transition: height 0.5s;
+	}
+		#open-filters-btn {
+			position: absolute;
+			bottom: 0%;
+			left: 0%;
+			width: 100%;
+			height: 30px;
+			border-radius: 1em;
+			background-color: rgba(168, 117, 250, 0.6);
+			color: black;
+			font-size: 15px;
+			z-index: 2;
+		}
+			#open-filters-btn:hover {
+				background-color: rgba(168, 117, 250, 0.7);
+			}
+		.filters .filter-controls {
+			position: absolute;
+			display: none;
+			top: 0%;
+			left: 0%;
+			padding: 20px;
+			width: 96%;
+			height: 50%;
+			border-radius: 1em;
+			opacity: 0;
+			transition: opacity 0.5 ease-in;
+		}
+			.filters .filter-controls .date-from-label {
+				position: relative;
+				z-index: 1;
+			}
+			.filters .filter-controls .date-to-label {
+				position: relative;
+				float: right;
+				z-index: 1;
+			}
+			.filters .filter-controls span {
+				color: transparent;
+			}
+	.visuals {
+		position: relative;
+		display: block;
+		background-color: white;
+		z-index: 2;
+	}
+		.metrics {
+			height: 100px;
+			width: 98%;
+			margin: 1%;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+			.metric-item {
+				width: 24%;
+				height: 90%;
+				background-color: rgba(196, 195, 195, 0.2);
+				text-align: center;
+				border-radius: 1em;
+			}
+				.metric-item p {
+					color: rgba(255, 32, 194, 0.8);
+					font-size: large;
+				}
+				.metric-item span {
+					font-weight: bolder;
+				}
+		.chart-area {
+			position: relative;
+			display: block;
+			width: 96%;
+			height: 700px;
+			background-color: rgba(196, 195, 195, 0.2);
+			border-radius: 1em;
+			padding: 1%;
+			margin: 1%;
+		}
+			.chart-row {
+				position: relative;
+				display: block;
+				width: 100%;
+				height: 50%;
+			}
+			.chart-col {
+				float: left;
+				width: 50%;
+				height: 100%;
+			}
+			
