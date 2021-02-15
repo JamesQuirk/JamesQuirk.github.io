@@ -7,8 +7,6 @@ let options = {
 
 let dateFrom = new Date(octo.period.from).toLocaleDateString().replace('/','-').replace('/','-');
 let dateTo = new Date(octo.period.to).toLocaleDateString().replace('/','-').replace('/','-');
-console.log(dateFrom);
-console.log(dateTo);
 $(function() {
 	$('#date-from-input').datepicker($.extend(options,{
 		defaultDate: dateFrom
@@ -57,13 +55,11 @@ processInput = function(event,dateMode) {
 		picker.datepicker('setDate',inVal);
 
 		let dateParts = inVal.split('-');
-		console.log(dateParts);
 		let dateString = dateParts[2] + '-' + dateParts[1] + '-' + dateParts[0];
-		console.log(dateString);
 		let options = {}
 		options['date' + dateMode] = new Date(dateString).toISOString();
-		console.log(options);
 		octo.filterData(options);
+		picker.blur();
 		
 	} else {
 		// invalid
