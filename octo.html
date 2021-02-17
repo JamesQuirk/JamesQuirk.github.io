@@ -6,6 +6,7 @@
 		<link rel="stylesheet" href="styles/octo.css">
 		<link rel="stylesheet" href="styles/input_modal.css">
 		<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
  
 		<link rel="icon" type="image/png" href="imgs/octo.png">
 		<link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet">
@@ -18,25 +19,15 @@
 		
 		<title>OCTO</title>
 	</head>
-	<body>
-		<header class="header">
-			<!-- TODO CHANGE IMG TITLE TO A POPUP -->
-			<img src="imgs/octo.png" alt="Octo Logo" class="logo" title="Big thanks to Laura for the fantastic drawing!">
-			<h1>OCTO</h1>
-			<div class="header-info">
-				<p>Last Refresh: <span id="last-refresh"></span></p>
-			</div>
-		</header>
-		<!-- Trigger/Open The Modal -->
-		<button id="open-modal-btn">Add API Key</button>
 
-		<!-- The Modal -->
-		<div id="apikey-modal" class="modal">
+	<!-- Add Profile Modal -->
+	<div id="profile-modal" class="profile-modal">
+		<div class="modal-pane">
+			<h3 class="modal-header">Input your Profile details</h3>
+			<span class="close">&times;</span>
 			<!-- Modal content -->
-			<div class="modal-content">
-				<h3 class="modal-header">Input your API Key</h3>
-				<span class="close">&times;</span>
-				<p>Inputting your Octopus Energy API Key allows you to access your usage data. Find your API Key <a href="https://octopus.energy/dashboard/developer/" target="_blank">here</a> (you will need to log in with your Octopus Energy username and password). <br>
+			<div id="add-profile-content" class="modal-content">
+				<p>Inputting your Octopus Energy meter details and API Key allows you to access your usage data. Find the relevant information <a href="https://octopus.energy/dashboard/developer/" target="_blank">here</a> (you will need to log in with your Octopus Energy username and password).<br>
 				<br>
 				<b>Note:</b> You must have a smart meter to be able to access your usage data.</p>
 				<br>
@@ -47,12 +38,38 @@
 				<input placeholder="API Key", id="apikey-input-field">
 				<br>
 				<label for="remember">Remember me?</label>
-				<input type="checkbox" id="remember">
+				<input type="checkbox" id="remember"><span title="Save your details locally to your browser." style="cursor: help;">&#x1F6C8;</span>
 				<br>
 				<br>
-				<button value="done" id="modal-done">done</button>
+				<button value="Done" id="modal-done" class="modal-button">Done</button>
+				<br>
+				<p class="smallprint">Data inputted here is only used to request your energy consumption. Your data is not sent to any third parties and is only saved locally if you choose.</p>
+			</div>
+			<!-- Modal content -->
+			<div id="show-profile-content" class="modal-content">
+				<br>
+				<p><strong>MPAN: </strong><span id="mpan-span"></span></p>
+				<p><strong>Serial: </strong><span id="serial-span"></span></p>
+				<p><strong>API Key: </strong><span id="apikey-span"></span></p>
+				<br>
+				<br>
+				<button value="Delete" id="delete-profile" class="modal-button">Delete</button>
 			</div>
 		</div>
+	</div>
+
+	<body>
+		<header class="header">
+			<!-- TODO CHANGE IMG TITLE TO A POPUP -->
+			<img src="imgs/octo.png" alt="Octo Logo" class="logo" title="Big thanks to Laura for the fantastic drawing!">
+			<h1>OCTO</h1>
+			<div class="header-info">
+				<p>Last Refresh: <span id="last-refresh"></span></p>
+				<!-- Trigger/Open The Modal -->
+				<button id="add-profile-btn">Add Profile</button>
+			</div>
+		</header>
+
 
 		<p id="default-data-warning">Sample dataset is being displayed</p>
 

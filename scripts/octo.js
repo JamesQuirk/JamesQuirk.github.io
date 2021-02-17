@@ -63,8 +63,6 @@ class Octo {
 			this.apiKey = localStorage.c;
 			this.profileAvailable = true;
 
-			this.consumptionUrl = 'https://api.octopus.energy/v1/electricity-meter-points/' + this.mpan + '/meters/' + this.serial + '/consumption/';
-
 		} else {
 			this.profileAvailable = false;
 		}
@@ -129,6 +127,18 @@ class Octo {
 		document.getElementById('default-data-warning').style.display = 'none';
 	}
 
+	deleteProfile() {
+		this.mpan = undefined;
+		this.serial = undefined;
+		this.apiKey = undefined;
+		if (localStorage.a) {
+			localStorage.removeItem('a');
+			localStorage.removeItem('b');
+			localStorage.removeItem('c');
+			localStorage.removeItem('apiKey');
+		}
+	}
+
 	async refreshPage() {
 		// Fetch 30 min data
 		await this.fetchData(10000,'period','');
@@ -155,7 +165,8 @@ class Octo {
 	async fetchData(pageSize,orderBy='period',groupBy='') {
 		// NOTE: if data count > pageSize then API returns the data on multiple pages - this method does not currently iterate through all pages.
 		console.log('Fetching data');
-		let url = this.consumptionUrl + '?' +
+		let consumptionUrl = 'https://api.octopus.energy/v1/electricity-meter-points/' + this.mpan + '/meters/' + this.serial + '/consumption/';
+		let url = consumptionUrl + '?' +
 			'period_from=' + this.period.from +
 			'&period_to=' + this.period.to +
 			'&page_size=' + pageSize +

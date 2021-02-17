@@ -8,8 +8,9 @@ body {
 	.header {
 		position: relative;
 		height: 80px;
-		width: 100%;
+		width: 98%;
 		text-align: center;
+		padding: 1%;
 	}
 		.header h1 {
 			position: absolute;
@@ -24,42 +25,46 @@ body {
 			/* display: inline-block; */
 		}
 		.header-info {
+			display: block;
 			float: right;
-			/* width: 300px; */
-			height: 50%;
 			justify-self: right;
-			/* display: inline-block; */
-		}
-		.header-info span {
-			font-style: italic;
-			color: rgba(168, 117, 250, 0.6);
-			font-weight: bold;
-		}
+		}	
+			.header-info p {
+				margin: 0.5em;
+			}
+			.header-info span {
+				font-style: italic;
+				color: rgba(168, 117, 250, 0.6);
+				font-weight: bold;
+			}
+			#add-profile-btn {
+				position: relative;
+				left: 50%;
+				transform: translate(-50%,0%);
+		
+				font-size: 1em;
+				height: 2.5em;
+				width: 6.5em;
+				border-radius: 1em;
+				text-align: center;
+				/* line-height: 100%; */
+				color: black;
+				background: rgba(168, 117, 250, 0.6);
+				transition: width 0.5s;
+			}
+			#add-profile-btn:hover {
+				background: rgba(168, 117, 250, 0.7);
+			}
 	#default-data-warning {
 		position: relative;
 		display: inline-block;
 		/* text-align: center; */
 		/* transform: translate(50%,0); */
 		color: red;
-		font-size: x-large;
+		font-size: 1.5em;
 		font-weight: bold;
 		display: none;
 		text-align: center;
-	}
-	#open-modal-btn {
-		position: relative;
-		left: 0;
-
-		font-size: medium;
-		padding: 1em;
-		border-radius: 1em;
-		text-align: center;
-		/* padding: 26px; */
-		color: black;
-		background: rgba(168, 117, 250, 0.6);
-	}
-	#open-modal-btn:hover {
-		background: rgba(168, 117, 250, 0.7);
 	}
 	.filters {
 		position: relative;
