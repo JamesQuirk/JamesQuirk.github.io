@@ -75,7 +75,7 @@ if (octo.profileAvailable) {
 }
 
 setInterval(function () {
-	if (octo.profileAvailable) {
+	if ((octo.profileAvailable) && (profileModal.getElementsByClassName('modal-header')[0].innerText != 'Here are your profile details')) {
 		profileAvailable();
 	}
 },500);

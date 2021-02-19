@@ -2,7 +2,8 @@
 <html lang="en">
 	<head>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		
+		<meta name="description" content="Electricity consumption analytics webapp for Octopus Energy. Shows energy uage graphs, utilising Octopus Energy API.">
+
 		<link rel="stylesheet" href="styles/octo.css">
 		<link rel="stylesheet" href="styles/modal.css">
 		<link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -23,7 +24,7 @@
 	<!-- Add Profile Modal -->
 	<div id="profile-modal" class="profile-modal">
 		<div class="modal-pane">
-			<h3 class="modal-header">Input your Profile details</h3>
+			<h2 class="modal-header">Input your Profile details</h2>
 			<span class="close">&times;</span>
 			<!-- Modal content -->
 			<div id="add-profile-content" class="modal-content">
@@ -31,11 +32,11 @@
 				<br>
 				<b>Note:</b> You must have a smart meter to be able to access your usage data.</p>
 				<br>
-				<input placeholder="MPAN", id="mpan-input-field">
+				<input placeholder="MPAN", id="mpan-input-field" type="text">
 				<br>
-				<input placeholder="Serial Number", id="serial-input-field">
+				<input placeholder="Serial Number", id="serial-input-field" type="text">
 				<br>
-				<input placeholder="API Key", id="apikey-input-field">
+				<input placeholder="API Key", id="apikey-input-field" type="text">
 				<br>
 				<label for="remember">Remember me?</label>
 				<input type="checkbox" id="remember"><span title="Save your details locally to your browser." style="cursor: help;">&#x1F6C8;</span>
@@ -75,8 +76,15 @@
 
 		<div class="filters">
 			<div class="filter-controls">
-				<label class="date-from-label" for="date-from-input">Date From: <input type="text" id="date-from-input"><span>&#9888;</span></label>
-				<label class="date-to-label" for="date-to-input">Date To: <input type="text" id="date-to-input"><span>&#9888;</span></label>
+				<div class="input-section">
+					<label class="date-from-label" for="date-from-input">Date From: <input type="text" id="date-from-input"><span>&#9888;</span></label>
+					<label class="date-to-label" for="date-to-input">Date To: <input type="text" id="date-to-input"><span>&#9888;</span></label>
+				</div>
+				<div class="quick-filter-section">
+					<button id="last-7-days">Last 7 Days</button>
+					<button id="last-24-hrs">Last 24 Hours</button>
+				</div>
+				<button id="reset-filters">Reset</button>
 			</div>
 			<button id="open-filters-btn">Filters &#8675;</button>
 		</div>

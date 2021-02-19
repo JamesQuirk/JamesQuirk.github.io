@@ -27,14 +27,14 @@ let filterControls = document.getElementsByClassName('filter-controls')[0];
 
 openBtn.onclick = function(event) {
 	if ((!filterControls.style.display) || (filterControls.style.display == "none")) {
-		filters.style.height = "80px";
+		filters.style.height = "12em";
 		filterControls.style.opacity = "1";
 		setTimeout(function() {filterControls.style.display = "block";},250)
 		openBtn.innerHTML = "Filters &#8673;"
 	} else {
 		filterControls.style.opacity = "0";
 		filterControls.style.display = "none";
-		filters.style.height = "30px";
+		filters.style.height = "2em";
 		openBtn.innerHTML = "Filters &#8675;"
 	}
 }

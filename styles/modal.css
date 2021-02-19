@@ -7,7 +7,7 @@
 		top: 0;
 		width: 100%; /* Full width */
 		height: 100%; /* Full height */
-		overflow: visible; /* Enable scroll if needed */
+		overflow: auto; /* Enable scroll if needed */
 		background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
 	}
 
@@ -18,8 +18,8 @@
 	/* Modal Content/Box */
 	.modal-pane {
 		background-color: #fefefe;
-		margin: 15% auto; /* 15% from the top and centered */
-		padding: 10%;
+		margin: 20% auto;
+		padding: 4em;
 		border: 1px solid #888;
 		width: 35%; /* Could be more or less, depending on screen size */
 		border-radius: 1em;

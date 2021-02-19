@@ -1,9 +1,48 @@
+:root {
+	--main-background: white;
+	--accent-colour: 168, 117, 250;
+	--default-display-alpha: 0.6;
+	--focussed-button-alpha: 0.7;
+	--visual-background-colour: 196, 195, 195, 0.2;
+	--metric-text-colour: 0, 0, 0, 0.8;
+	--filter-controls-padding: 1.2em;
+}
+
 body {
 	font-family: 'Quicksand', sans-serif;
 	font-weight: 300;
 }
+	button {
+		cursor: pointer;
+		border-radius: 1em;
+		font-size: 1em;
+		height: 2.5em;
+		text-align: center;
+		padding: 0.5em;
+	}
+	input[type="text"] {
+		border-radius: 0.5em;
+		height: 1.5em;
+		margin: 0.25em;
+	}
 	h1, h2, h3, h4, h5, h6 {
 		font-weight: 500;
+	}
+	h1 {
+		display: block;
+		position: absolute;
+		margin: auto;
+		left: 50%;
+		transform: translate(-50%,0);
+		width: 50%;
+		font-size: 3em;
+		z-index: 3;
+	}
+	h2 {
+		position: relative;
+		display: block;
+		margin: auto;
+		color: rgb(var(--accent-colour));
 	}
 	.header {
 		position: relative;
@@ -12,13 +51,6 @@ body {
 		text-align: center;
 		padding: 1%;
 	}
-		.header h1 {
-			position: absolute;
-			left: 50%;
-			transform: translate(-50%,0);
-			width: 50%;
-			font-size: 2.5em;
-		}
 		.logo {
 			float: left;
 			height: 100%;
@@ -34,7 +66,7 @@ body {
 			}
 			.header-info span {
 				font-style: italic;
-				color: rgba(168, 117, 250, 0.6);
+				color: rgba(var(--accent-colour), var(--default-display-alpha));
 				font-weight: bold;
 			}
 			#add-profile-btn {
@@ -45,15 +77,14 @@ body {
 				font-size: 1em;
 				height: 2.5em;
 				width: 6.5em;
-				border-radius: 1em;
+				padding: 0;
 				text-align: center;
-				/* line-height: 100%; */
 				color: black;
-				background: rgba(168, 117, 250, 0.6);
+				background: rgba(var(--accent-colour), var(--default-display-alpha));
 				transition: width 0.5s;
 			}
 			#add-profile-btn:hover {
-				background: rgba(168, 117, 250, 0.7);
+				background: rgba(var(--accent-colour), var(--focussed-button-alpha));
 			}
 	#default-data-warning {
 		position: relative;
@@ -69,11 +100,11 @@ body {
 	.filters {
 		position: relative;
 		display: block;
-		height: 30px;
+		height: 2em;
 		width: 98%;
 		margin: 1%;
 		border-radius: 1em;
-		background-color: rgba(168, 117, 250, 0.6);
+		background-color: rgba(var(--accent-colour), var(--default-display-alpha));
 		transition: height 0.5s;
 	}
 		#open-filters-btn {
@@ -81,44 +112,62 @@ body {
 			bottom: 0%;
 			left: 0%;
 			width: 100%;
-			height: 30px;
-			border-radius: 1em;
-			background-color: rgba(168, 117, 250, 0.6);
+			height: 2em;
+			/* border-radius: 1em; */
+			background-color: rgba(var(--accent-colour), var(--default-display-alpha));
 			color: black;
-			font-size: 15px;
+			font-size: 1em;
 			z-index: 2;
 		}
 			#open-filters-btn:hover {
-				background-color: rgba(168, 117, 250, 0.7);
+				background-color: rgba(var(--accent-colour), var(--focussed-button-alpha));
 			}
 		.filters .filter-controls {
 			position: absolute;
 			display: none;
 			top: 0%;
 			left: 0%;
-			padding: 20px;
+			padding: var(--filter-controls-padding);
 			width: 96%;
 			height: 50%;
 			border-radius: 1em;
-			opacity: 0;
-			transition: opacity 0.5 ease-in;
+			/* opacity: 0;
+			transition: opacity 0.5 ease-in; */
 		}
-			.filters .filter-controls .date-from-label {
-				position: relative;
-				z-index: 1;
+			.filter-controls button {
+				background: rgba(0,0,0,0.6);
+				color: rgb(var(--accent-colour));
 			}
-			.filters .filter-controls .date-to-label {
+			.filter-controls .input-section {
 				position: relative;
-				float: right;
-				z-index: 1;
+				left: 0;
+				width: auto;
 			}
-			.filters .filter-controls span {
-				color: transparent;
+				.filter-controls .date-from-label {
+					position: absolute;
+					z-index: 1;
+				}
+				.filter-controls .date-to-label {
+					position: absolute;
+					top: 2em;
+					z-index: 1;
+				}
+				.filter-controls span {
+					color: transparent;
+				}
+			.filter-controls .quick-filter-section {
+				position: absolute;
+				left: 50%;
+			}
+			.filter-controls #reset-filters {
+				position: absolute;
+				display: block;
+				bottom: var(--filter-controls-padding);
+				right: var(--filter-controls-padding);
 			}
 	.visuals {
 		position: relative;
 		display: block;
-		background-color: white;
 		z-index: 2;
 	}
 		.metrics {
@@ -132,12 +181,12 @@ body {
 			.metric-item {
 				width: 24%;
 				height: 90%;
-				background-color: rgba(196, 195, 195, 0.2);
+				background-color: rgba(var(--visual-background-colour));
 				text-align: center;
 				border-radius: 1em;
 			}
 				.metric-item p {
-					color: rgba(255, 32, 194, 0.8);
+					color: rgba(var(--metric-text-colour));
 					font-size: large;
 				}
 				.metric-item span {
@@ -148,7 +197,7 @@ body {
 			display: block;
 			width: 96%;
 			height: 700px;
-			background-color: rgba(196, 195, 195, 0.2);
+			background-color: rgba(var(--visual-background-colour));
 			border-radius: 1em;
 			padding: 1%;
 			margin: 1%;
