@@ -85,3 +85,46 @@ deleteProfileBtn.onclick = function() {
 	octo.deleteProfile();
 	location.reload();
 }
+
+// -------------- Heating Schedule -----------------
+let itemCount = 0;
+let addHSItem = document.getElementById('add-heating-schedule-item');
+addHSItem.onclick = function() {
+	// create new schedule item
+	itemCount ++;
+	let itemDiv = document.createElement('div');
+	itemDiv.setAttribute('class','schedule-item');
+	itemDiv.setAttribute('id','hsi' + itemCount);
+	document.getElementById('heating-schedule-container').appendChild(itemDiv);
+	
+	let nameSpan = document.createElement('span');
+	nameSpan.setAttribute('class','item-name');
+	nameSpan.innerText = 'item ' + itemCount;
+	itemDiv.appendChild(nameSpan);
+
+	let timingDiv = document.createElement('div');
+	timingDiv.setAttribute('class','timing-block');
+	itemDiv.appendChild(timingDiv);
+
+	let startSpan = document.createElement('span');
+	startSpan.setAttribute('class','start-time');
+	startSpan.innerText = 'start';
+	timingDiv.appendChild(startSpan);
+
+	timingDiv.appendChild(document.createTextNode('-'));
+
+	let finishSpan = document.createElement('span');
+	finishSpan.setAttribute('class','finish-time');
+	finishSpan.innerText = 'finish';
+	timingDiv.appendChild(finishSpan);
+
+	let deleteSpan = document.createElement('span');
+	deleteSpan.setAttribute('class','delete-item-btn');
+	deleteSpan.innerHTML = '&#9747;';
+	deleteSpan.setAttribute('parentId','hsi'+itemCount);
+	deleteSpan.onclick = function(event) {
+		document.getElementById(event.target.attributes.parentId.value).remove();
+		itemCount --;
+	}
+	itemDiv.appendChild(deleteSpan);
+}

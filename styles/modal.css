@@ -60,3 +60,51 @@
 		.smallprint {
 			font-size: 0.75em;
 		}
+
+		hr {
+			margin-top: 1em;
+			margin-bottom: 0.5em;
+		}
+		.heating-schedule-heading {
+			position: relative;
+			display: inline-block;
+		}
+		#add-heating-schedule-item {
+			font-size: 1em;
+			height: 1.5em;
+			width: 1.5em;
+			padding: 0;
+		}
+		.schedule-item {
+			position: relative;
+			display: block;
+			margin-left: 5%;
+			height: 1.5em;
+			/* background: rgba(0,0,0,0.5); */
+		}
+		.schedule-item:hover > .delete-item-btn {
+			display: inline-block;
+		}
+			.schedule-item .timing-block {
+				position: absolute;
+				display: inline-block;
+				left: 50%;
+				/* transform: translate(-50%,0); */
+			}
+			.schedule-item .delete-item-btn {
+				position: absolute;
+				display: none;
+				box-sizing: border-box;
+				right: 0;
+				top: 50%;
+				transform: translate(0,-50%);
+				margin: 0em;
+				margin-right: 0.2em;
+				/* background: rgba(0,0,0,0.5); */
+				vertical-align: middle;
+				cursor: pointer;
+				border-radius: 1em;
+			}
+			.schedule-item .delete-item-btn:hover {
+				background: rgba(150,150,150,0.2);
+			}

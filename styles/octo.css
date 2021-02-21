@@ -2,10 +2,10 @@
 	--main-background: white;
 	--accent-colour: 168, 117, 250;
 	--default-display-alpha: 0.6;
-	--focussed-button-alpha: 0.7;
+	--focussed-button-alpha: 0.8;
 	--visual-background-colour: 196, 195, 195, 0.2;
 	--metric-text-colour: 0, 0, 0, 0.8;
-	--filter-controls-padding: 1.2em;
+	--filter-controls-padding: 2em;
 }
 
 body {
@@ -19,6 +19,10 @@ body {
 		height: 2.5em;
 		text-align: center;
 		padding: 0.5em;
+		background: rgb(var(--accent-colour),var(--default-display-alpha));
+	}
+	button:hover {
+		background: rgb(var(--accent-colour),var(--focussed-button-alpha));
 	}
 	input[type="text"] {
 		border-radius: 0.5em;
@@ -127,9 +131,10 @@ body {
 			display: none;
 			top: 0%;
 			left: 0%;
+			box-sizing: border-box;
 			padding: var(--filter-controls-padding);
-			width: 96%;
-			height: 50%;
+			width: 100%;
+			height: 90%;
 			border-radius: 1em;
 			/* opacity: 0;
 			transition: opacity 0.5 ease-in; */
@@ -140,16 +145,19 @@ body {
 			}
 			.filter-controls .input-section {
 				position: relative;
+				display: inline-block;
 				left: 0;
-				width: auto;
+				width: 50%;
+				margin: 0;
 			}
 				.filter-controls .date-from-label {
-					position: absolute;
+					position: relative;
+					display: block;
 					z-index: 1;
 				}
 				.filter-controls .date-to-label {
-					position: absolute;
-					top: 2em;
+					position: relative;
+					display: block;
 					z-index: 1;
 				}
 				.filter-controls span {
@@ -157,7 +165,10 @@ body {
 				}
 			.filter-controls .quick-filter-section {
 				position: absolute;
+				display: inline-block;
 				left: 50%;
+				width: 50%;
+				margin: 0;
 			}
 			.filter-controls #reset-filters {
 				position: absolute;
@@ -186,11 +197,12 @@ body {
 				border-radius: 1em;
 			}
 				.metric-item p {
+					position: relative;
+					display: block;
+					top: auto;
 					color: rgba(var(--metric-text-colour));
-					font-size: large;
-				}
-				.metric-item span {
-					font-weight: bolder;
+					font-size: 1.2em;
+					/* font-size: calc(1vw + 1vh + 0.5vmin); */
 				}
 		.chart-area {
 			position: relative;
@@ -202,6 +214,16 @@ body {
 			padding: 1%;
 			margin: 1%;
 		}
+			.chart-area .no-data-warning {
+				display: none;
+				position: absolute;
+				z-index: 3; /* Just above chart */
+				left: 50%;
+				top: 50%;
+				transform: translate(-50%,-50%);
+				color: black;
+				background: rgb(var(--visual-background-colour));
+			}
 			.chart-row {
 				position: relative;
 				display: block;
@@ -209,6 +231,7 @@ body {
 				height: 50%;
 			}
 			.chart-col {
+				position: relative;
 				float: left;
 				width: 50%;
 				height: 100%;

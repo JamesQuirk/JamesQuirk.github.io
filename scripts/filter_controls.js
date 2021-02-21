@@ -1,25 +1,30 @@
-let options = {
+let datepickerOptions = {
 	dateFormat: 'dd-mm-yy',
 	changeMonth: true,
 	changeYear: true,
 	maxDate: 0
 }; // COMMON OPTIONS
 
-let dateFrom = new Date(octo.period.from).toLocaleDateString().replace('/','-').replace('/','-');
-let dateTo = new Date(octo.period.to).toLocaleDateString().replace('/','-').replace('/','-');
-$(function() {
-	$('#date-from-input').datepicker($.extend(options,{
-		defaultDate: dateFrom
-	}));
-	$('#date-from-input').datepicker('setDate',dateFrom);
-});
+let dateFrom = new Date(octo.period.from);
+let dateTo = new Date(octo.period.to);
 
-$(function() {
-	$('#date-to-input').datepicker($.extend(options,{
-		defaultDate: dateTo
-	}));
-	$('#date-to-input').datepicker('setDate',dateTo);
-});
+$('#date-from-input').datepicker($.extend(datepickerOptions,{
+	defaultDate: dateFrom.toLocaleDateString().replace('/','-').replace('/','-')
+}));
+
+$('#date-to-input').datepicker($.extend(datepickerOptions,{
+	defaultDate: dateTo.toLocaleDateString().replace('/','-').replace('/','-')
+}));
+
+$.updateDatePickers = function(from,to) {
+	console.log('UPDATING DATEPICKER DATES');
+	console.log('PICKER FROM: '+from.toLocaleDateString().replace('/','-').replace('/','-'));
+	console.log('PICKER TO: '+to.toLocaleDateString().replace('/','-').replace('/','-'));
+	$('#date-from-input').datepicker('setDate',from.toLocaleDateString().replace('/','-').replace('/','-'));
+	$('#date-to-input').datepicker('setDate',to.toLocaleDateString().replace('/','-').replace('/','-'));
+};
+
+$.updateDatePickers(dateFrom,dateTo);
 
 let openBtn = document.getElementById('open-filters-btn');
 let filters = document.getElementsByClassName('filters')[0];
@@ -39,6 +44,8 @@ openBtn.onclick = function(event) {
 	}
 }
 
+let filterOptions = {};
+
 // ON INPUT CHANGE
 let dateFromInput = document.getElementById('date-from-input');
 let dateToInput = document.getElementById('date-to-input');
@@ -56,9 +63,8 @@ processInput = function(event,dateMode) {
 
 		let dateParts = inVal.split('-');
 		let dateString = dateParts[2] + '-' + dateParts[1] + '-' + dateParts[0];
-		let options = {}
-		options['date' + dateMode] = new Date(dateString).toISOString();
-		octo.filterData(options);
+		filterOptions['date' + dateMode] = new Date(dateString).toISOString();
+		octo.filterData(filterOptions);
 		picker.blur();
 		
 	} else {
@@ -74,3 +80,43 @@ dateFromInput.onchange = function(event) {
 dateToInput.onchange = function(event) {
 	processInput(event,'to')
 };
+
+let last7DaysBtn = document.getElementById('last-7-days');
+last7DaysBtn.onclick = function(event) {
+	let today = new Date();
+	filterOptions = {
+		datefrom: setTime(dateXDaysFrom(today,-7),'00:00:00.000'),
+		dateto: new Date()
+	}
+	octo.filterData(filterOptions);
+	$.updateDatePickers(filterOptions.datefrom,filterOptions.dateto);
+};
+
+let last24HrsBtn = document.getElementById('last-24-hrs');
+last24HrsBtn.onclick = function(event) {
+	let today = new Date();
+	filterOptions = {
+		datefrom: setTime(dateXDaysFrom(today,-1),'00:00:00.000'),
+		dateto: new Date()
+	}
+	octo.filterData(filterOptions);
+	$.updateDatePickers(filterOptions.datefrom,filterOptions.dateto);
+};
+
+let thisMonthBtn = document.getElementById('this-month');
+thisMonthBtn.onclick = function() {
+	let today = new Date();
+	filterOptions = {
+		datefrom: setTime(setDay(today,1),'00:00:00.000'),
+		dateto: today
+	};
+	octo.filterData(filterOptions);
+	$.updateDatePickers(filterOptions.datefrom,filterOptions.dateto);
+};
+
+let resetFiltersBtn = document.getElementById('reset-filters');
+resetFiltersBtn.onclick = function(event) {
+	console.log('RESETTING FILTERS')
+	octo.resetPage();
+	$.updateDatePickers(dateFrom,dateTo);
+}
