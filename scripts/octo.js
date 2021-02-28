@@ -6,6 +6,8 @@ class Octo {
 		this.chosenMetrics = ['total','avg-daily','weekday-most','num-days'];
 		this.data = {};
 		this.period = {};
+		this.chartBorderColorStr = 'rgba(168, 117, 250, 0.6)'
+		this.chartFillColorStr = 'rgba(168, 117, 250, 0.3)'
 
 		this.initiatePage();
 	}
@@ -23,15 +25,23 @@ class Octo {
 
 	initiatePage() {
 		this.initiateDatePeriod();
+		this.lastRefresh = 'Never';
+		document.getElementById('last-refresh').innerText = this.lastRefresh;
 		// Check if API Key already available.
 		if (localStorage.a) {
 			this.mpan = localStorage.a;
 			this.serial = localStorage.b;
 			this.apiKey = localStorage.c;
 			this.profileAvailable = true;
-
+			if (localStorage.schedule) {
+				this.schedule = JSON.parse(localStorage.schedule);
+			} else {
+				this.schedule = {};
+			}
+			document.getElementById('profile-config').style.display = 'block';
 		} else {
 			this.profileAvailable = false;
+			this.schedule = {}; // object containing schedule items
 		}
 
 		// Initiate charts (plots empty datasets)
@@ -53,6 +63,7 @@ class Octo {
 			this.refreshPage();
 		} else {
 			this.defaultData();
+			this.updateCharts();
 		}
 	}
 
@@ -129,6 +140,7 @@ class Octo {
 			if (!localStorage.apiKey) {
 				localStorage.apiKey = '_yoCeda_siTiyEkIpAla_eRAto_NsisihT';
 			}
+			document.getElementById('profile-config').style.display = 'block';
 		}
 
 		this.refreshPage();
@@ -157,29 +169,6 @@ class Octo {
 		console.log('Last Refresh: ' + this.lastRefresh);
 		document.getElementById('last-refresh').innerText = this.lastRefresh.toLocaleString().replace(',','');
 
-	}
-
-	updateCharts() {
-		// this.duration();
-		// Update chart data
-		this.updateFullPeriodChart(this.data.data);
-		this.updateDayAvgChart(this.data.data);
-		this.updateWeekAvgChart(this.data.data);
-
-		// Update Metrics
-		this.updateMetrics();
-
-		if (this.data.recordCount == 0) {
-			let elArray = document.getElementsByClassName('no-data-warning');
-			for (let i=0;i<elArray.length;i++) {
-				elArray[i].style.display = 'block';
-			}
-		} else {
-			let elArray = document.getElementsByClassName('no-data-warning');
-			for (let i=0;i<elArray.length;i++) {
-				elArray[i].style.display = 'none';
-			}
-		}
 	}
 
 	changeData(data) {
@@ -367,6 +356,28 @@ class Octo {
 		}
 	}
 
+	updateCharts() {
+		// Update chart data
+		this.updateFullPeriodChart(this.data.data);
+		this.updateDayAvgChart(this.data.data);
+		this.updateWeekAvgChart(this.data.data);
+
+		// Update Metrics
+		this.updateMetrics();
+
+		if (this.data.recordCount == 0) {
+			let elArray = document.getElementsByClassName('no-data-warning');
+			for (let i=0;i<elArray.length;i++) {
+				elArray[i].style.display = 'block';
+			}
+		} else {
+			let elArray = document.getElementsByClassName('no-data-warning');
+			for (let i=0;i<elArray.length;i++) {
+				elArray[i].style.display = 'none';
+			}
+		}
+	}
+
 	async initialiseFullPeriodChart(data) {
 		console.log('Initiating Full Period Chart');
 		// data = this.getAggregation(data,'date','mean');
@@ -376,7 +387,8 @@ class Octo {
 			data: {
 				datasets: [{
 					data: [],
-					backgroundColor: 'rgba(168, 117, 250, 0.6)'
+					borderColor: this.chartBorderColorStr,
+					backgroundColor: this.chartFillColorStr
 				}]
 			},
 			options: {
@@ -471,7 +483,8 @@ class Octo {
 			data: {
 				datasets: [{
 					data: [],
-					backgroundColor: 'rgba(168, 117, 250, 0.6)'
+					borderColor: this.chartBorderColorStr,
+					backgroundColor: this.chartFillColorStr
 				}]
 			},
 			options: {
@@ -530,6 +543,9 @@ class Octo {
 							return value + ' kWh';
 						}
 					}
+				},
+				annotation: {
+					annotations: []
 				}
 			}
 		});
@@ -538,6 +554,34 @@ class Octo {
 	async updateDayAvgChart(data) {
 		data = this.getAggregation(data,'half-hr','mean');
 		this.dayAvgChart.data.datasets[0].data = data;
+		if (data.length > 0) {
+			let scheduleIDs = Object.keys(this.schedule);
+			let exDate = new Date(data[0].x).toLocaleDateString();
+			let scheduleItem;
+			this.dayAvgChart.options.annotation.annotations = []; // reset annotations list to avoid duplicating items.
+			for (let i=0;i<scheduleIDs.length;i++) {
+				scheduleItem = this.schedule[scheduleIDs[i]];
+				if ((isValidTimeStr(scheduleItem.start)) && (isValidTimeStr(scheduleItem.finish))) {
+					this.dayAvgChart.options.annotation.annotations.push({
+						display: true,
+						drawTime: 'afterDraw',
+						// id: 'id1',
+						type: 'box',
+						borderColor: 'rgba(255,0,0,0.6)',
+						backgroundColor: 'rgba(255,0,0,0.2)',
+						xScaleID: 'x-axis-0',
+						yScaleID: 'y-axis-0',
+						xMin: convertTimeStr2Date(scheduleItem.start,exDate).toISOString(),
+						xMax: convertTimeStr2Date(scheduleItem.finish,exDate).toISOString(),
+						yMin: 0,
+						yMax: 1.5,
+						enter: function(context) {
+							console.log(context);
+						}
+					}); 
+				}
+			}
+		}
 		this.dayAvgChart.update();
 	}
 
@@ -551,7 +595,9 @@ class Octo {
 				labels: [],
 				datasets: [{
 					data: [],
-					backgroundColor: 'rgba(168, 117, 250, 0.6)'
+					borderWidth: 3,
+					borderColor: this.chartBorderColorStr,
+					backgroundColor: this.chartFillColorStr
 				}]
 			},
 			options: {

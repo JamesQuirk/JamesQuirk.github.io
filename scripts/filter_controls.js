@@ -105,11 +105,28 @@ last24HrsBtn.onclick = function(event) {
 
 let thisMonthBtn = document.getElementById('this-month');
 thisMonthBtn.onclick = function() {
-	let today = new Date();
+	let now = new Date();
 	filterOptions = {
-		datefrom: setTime(setDay(today,1),'00:00:00.000'),
-		dateto: today
+		datefrom: setTime(setDay(now,1),'00:00:00.000'),
+		dateto: now
 	};
+	octo.filterData(filterOptions);
+	$.updateDatePickers(filterOptions.datefrom,filterOptions.dateto);
+};
+
+let lastMonthBtn = document.getElementById('last-month');
+lastMonthBtn.onclick = function() {
+	console.log('LAST MONTH')
+	let startCurrMonth = setTime(setDay(new Date(),1),'00:00:00.000');
+	let startPrevMonth = new Date(startCurrMonth.getTime());
+	startPrevMonth.setMonth(startCurrMonth.getMonth() - 1);
+	let endPrevMonth = setTime(new Date(startCurrMonth.getTime()),'23:59:59.999');
+	endPrevMonth.setDate(endPrevMonth.getDate() - 1);
+	filterOptions = {
+		datefrom: startPrevMonth,
+		dateto: endPrevMonth
+	};
+
 	octo.filterData(filterOptions);
 	$.updateDatePickers(filterOptions.datefrom,filterOptions.dateto);
 };
