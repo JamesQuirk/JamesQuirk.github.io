@@ -55,8 +55,78 @@
 			background: rgba(168, 117, 250, 0.7);
 		}
 		.modal-content input, .modal-content span {
-			margin: 0.25em;
+			margin-left: 5px;
+			margin-right: 5px;
 		}
 		.smallprint {
 			font-size: 0.75em;
 		}
+
+		#profile-config {
+			display: none;
+		}
+		#profile-config hr {
+			margin-top: 1em;
+			margin-bottom: 0.5em;
+		}
+			.heating-schedule-heading {
+				position: relative;
+				display: inline-block;
+			}
+			#add-heating-schedule-item {
+				font-size: 1em;
+				height: 1.5em;
+				width: 1.5em;
+				padding: 0;
+			}
+			.schedule-item {
+				position: relative;
+				display: block;
+				margin-left: 5%;
+				height: 1.5em;
+				/* background: rgba(0,0,0,0.5); */
+			}
+			.schedule-item:hover > .delete-item-btn {
+				display: inline-block;
+			}
+				.schedule-item input {
+					display: none;
+					width: 100px;
+				}
+				.schedule-item .timing-block {
+					position: absolute;
+					display: inline-block;
+					left: 50%;
+					transform: translate(-50%,0);
+				}
+					.schedule-item .editable {
+						border-radius: 0.5em;
+						cursor: pointer;
+						color: rgb(var(--accent-colour));
+					}
+					.schedule-item .editable:hover {
+						background: rgba(150,150,150,0.2);
+					}
+					.schedule-item .timing-block input{
+						width: 60px;
+					}
+				.ui-timepicker-viewport {
+					font-size: 1em;
+				}
+				.schedule-item .delete-item-btn {
+					position: absolute;
+					display: none;
+					box-sizing: border-box;
+					right: 0;
+					top: 50%;
+					transform: translate(0,-50%);
+					margin: 0em;
+					margin-right: 0.2em;
+					/* background: rgba(0,0,0,0.5); */
+					vertical-align: middle;
+					cursor: pointer;
+					border-radius: 1em;
+				}
+				.schedule-item .delete-item-btn:hover {
+					background: rgba(150,150,150,0.2);
+				}
